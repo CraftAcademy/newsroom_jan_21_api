@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :article do
-    title { "MyString" }
-    teaser { "MyText" }
-    body { "MyText" }
+    title { "MyTitle" }
+    teaser { "MyTeaser" }
+    body { "MyLongBodyText" }
     category { 1 }
   end
 end
