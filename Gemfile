@@ -14,6 +14,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'rspec-rails'
   gem 'pry-rails'
+  gem 'coveralls', require: false
 end
 
 group :development do
