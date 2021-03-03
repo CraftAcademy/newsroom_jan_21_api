@@ -27,7 +27,7 @@ class Api::ArticlesController < ApplicationController
         title: story.title,
         teaser: story.teaser,
         article_type: story.article_type,
-        created_at: story.created_at
+        date: story.created_at.strftime('%F')
       }
     end
   end
