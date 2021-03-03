@@ -3,6 +3,6 @@ FactoryBot.define do
     title { "MyTitle" }
     teaser { "MyTeaser" }
     body { "MyLongBodyText" }
-    category { 1 }
+    article_type { 1 }
   end
 end

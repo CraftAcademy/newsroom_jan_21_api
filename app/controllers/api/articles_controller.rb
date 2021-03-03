@@ -1,17 +1,34 @@
 class Api::ArticlesController < ApplicationController
   def index
-    articles = Article.all.sort_by(&:created_at).reverse
-    articles_list = articles.map do |article|
-      {
-        id: article.id,
-        title: article.title,
-        teaser: article.teaser,
-        category: article.category,
-        created_at: article.created_at
+    if params[:article_type]
+      articles_list = find_article_type(params[:article_type])
+
+      render json: {
+        articles: articles_list
+      }
+    else
+      render json: {
+        articles: Article.all
       }
     end
+  rescue ActiveRecord::StatementInvalid => error
     render json: {
-      articles: articles_list
-    }
+      message: 'Invalid article type. Try story or experience.'
+    }, status: 422
+  end
+
+  private
+
+  def find_article_type(type)
+    raw_list = Article.where(article_type: type).sort_by(&:created_at).reverse
+    raw_list.map do |story|
+      {
+        id: story.id,
+        title: story.title,
+        teaser: story.teaser,
+        article_type: story.article_type,
+        created_at: story.created_at
+      }
+    end
   end
 end

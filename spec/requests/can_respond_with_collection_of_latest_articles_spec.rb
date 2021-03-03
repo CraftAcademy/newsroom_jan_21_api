@@ -1,4 +1,5 @@
 RSpec.describe 'GET /api/articles', type: :request do
+  let!(:test_experience) { create(:article, article_type: 'experience') }
   let!(:test_article1) { create(:article, created_at: Time.current - 5.days) }
   let!(:test_article2) { create(:article, title: 'Test Article 2', created_at: Time.current - 2.days) }
   let!(:test_article3) { create(:article, created_at: Time.current - 3.days) }
@@ -6,14 +7,17 @@ RSpec.describe 'GET /api/articles', type: :request do
   let!(:test_article5) { create(:article, title: 'Test Article 5', created_at: Time.current - 1.days) }
   describe 'successfully' do
     before do
-      get '/api/articles'
+      get '/api/articles',
+          params: {
+            article_type: 'story'
+          }
     end
 
     it 'responds with a 200 status' do
       expect(response).to have_http_status 200
     end
 
-    it 'responds with a list of 5 articles' do
+    it 'filters out experience article, thus responding with a list of 5 articles' do
       expect(response_json['articles'].length).to eq 5
     end
 
@@ -31,7 +35,39 @@ RSpec.describe 'GET /api/articles', type: :request do
     end
 
     it 'renders articles with expected title' do
-      expect(response_json['articles'].first['category']).to eq 'story'
+      expect(response_json['articles'].first['article_type']).to eq 'story'
     end
+  end
+
+  describe 'unsuccessfully with no params' do
+    before do
+      get '/api/articles'
+    end
+
+    it 'responds with a 200 status' do
+      expect(response).to have_http_status 200
+    end
+
+    it 'just responds with all articles' do
+      expect(response_json['articles'].length).to eq 6
+    end
+  end
+
+  describe 'unsuccessfully with wrong params' do
+    before do
+      get '/api/articles',
+      params: {
+        article_type: 'mishmash'
+      }
+    end
+
+    it 'responds with a 422 status' do
+      expect(response).to have_http_status 422
+    end
+
+    it 'responds with a error message' do
+      expect(response_json['message']).to eq 'Invalid article type. Try story or experience.'
+    end
+
   end
 end
