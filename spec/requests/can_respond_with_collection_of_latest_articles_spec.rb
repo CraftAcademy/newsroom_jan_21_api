@@ -23,10 +23,13 @@ RSpec.describe 'GET /api/articles', type: :request do
 
     it 'responds with newest article first in the list' do
       expect(response_json['articles'].first['title']).to eq 'Test Article 5'
+    end
+
+    it 'responds with second newest article second in the list' do
       expect(response_json['articles'].second['title']).to eq 'Test Article 2'
     end
 
-    it 'the articles are expected not to contain the body' do
+    it 'the responded articles are expected not to contain the body attribute' do
       expect(response_json['articles'].first['body']).to eq nil
     end
 
@@ -49,7 +52,7 @@ RSpec.describe 'GET /api/articles', type: :request do
     end
 
     it 'just responds with all articles' do
-      expect(response_json['articles'].length).to eq 6
+      expect(response_json['message']).to eq "Needs specification for type of article!"
     end
   end
 

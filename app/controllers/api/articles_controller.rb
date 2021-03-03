@@ -8,7 +8,7 @@ class Api::ArticlesController < ApplicationController
       }
     else
       render json: {
-        articles: Article.all
+        message: "Needs specification for type of article!"
       }
     end
   rescue ActiveRecord::StatementInvalid => error

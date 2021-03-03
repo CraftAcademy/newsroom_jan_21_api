@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
   enum article_type: [:experience, :story]
-  serialize :created_at, Time
+
+  validates_presence_of :article_type, :title, :body, :teaser
 end
