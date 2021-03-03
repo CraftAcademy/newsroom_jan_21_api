@@ -13,5 +13,13 @@ RSpec.describe 'GET /api/articles/:id', type: :request do
       expect(response_json['article']['teaser']).to eq 'MyTeaser'
     end
 
+    it('responds with the right body') do
+      expect(response_json['article']['body']).to eq 'MyLongBodyText'
+    end
+
+    it('responds with the right title') do
+      expect(response_json['article']['title']).to eq 'MyTitle'
+    end
+
   end
 end
