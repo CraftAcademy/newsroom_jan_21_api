@@ -37,10 +37,6 @@ RSpec.describe 'GET /api/articles', type: :request do
       expect(response_json['articles'].first['teaser']).to eq 'MyTeaser'
     end
 
-    it 'renders articles with expected title' do
-      expect(response_json['articles'].first['article_type']).to eq 'story'
-    end
-
     it 'renders articles with expected date format' do
       expected_output = (Time.current - 1.days).strftime('%F')
       expect(response_json['articles'].first['date']).to eq expected_output
