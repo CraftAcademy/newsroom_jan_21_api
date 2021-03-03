@@ -1,0 +1,17 @@
+RSpec.describe 'GET /api/articles/:id', type: :request do
+  let!(:test_article1) { create(:article) }
+  describe 'successfully' do
+    before do
+      get "/api/articles/#{test_article1.id}"
+     
+    end
+    it('responds with 200 status') do
+      expect(response).to have_http_status 200
+    end
+
+    it('responds with the right teaser') do
+      expect(response_json['article']['teaser']).to eq 'MyTeaser'
+    end
+
+  end
+end

@@ -14,4 +14,8 @@ class Api::ArticlesController < ApplicationController
       message: 'Invalid article type. Try story or experience.'
     }, status: 422
   end
+
+  def show
+    render json: {}
+  end
 end
