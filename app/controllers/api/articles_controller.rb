@@ -7,7 +7,7 @@ class Api::ArticlesController < ApplicationController
     else
       render json: {
         message: "Needs specification for type of article!"
-      }
+      }, status: 422
     end
   rescue ActiveRecord::StatementInvalid => error
     render json: {
@@ -18,5 +18,9 @@ class Api::ArticlesController < ApplicationController
   def show
     article = Article.find(params[:id])
     render json: article, serializer: ArticlesShowSerializer
+  rescue ActiveRecord::RecordNotFound => error
+    render json: {
+      message: 'Article not found.'
+    }, status: 404
   end
 end
