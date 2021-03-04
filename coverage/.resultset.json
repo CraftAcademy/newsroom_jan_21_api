@@ -17,10 +17,10 @@
       "/Users/tony/get_local/newsroom_jan_21_api/app/controllers/api/articles_controller.rb": [
         1,
         1,
-        20,
-        16,
-        null,
+        18,
         14,
+        null,
+        12,
         null,
         4,
         null,
@@ -30,11 +30,6 @@
         2,
         null,
         null,
-        null,
-        null,
-        1,
-        4,
-        4,
         null,
         null
       ],
@@ -47,15 +42,7 @@
         1,
         1,
         1,
-        70,
-        null,
-        null
-      ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/serializers/articles_show_serializer.rb": [
-        1,
-        1,
-        1,
-        4,
+        60,
         null,
         null
       ],
@@ -87,6 +74,6 @@
         0
       ]
     },
-    "timestamp": 1614804977
+    "timestamp": 1614851860
   }
 }
