@@ -1,8 +1,15 @@
 class Api::ArticlesController < ApplicationController
   def index
-    if params[:article_type]
+    if params[:lat] && params[:long]
+      location = Geocoder.search(params[:lat], params[:long])
+      raw_list = Article.where(location: location.first.city).sort_by(&:created_at).reverse
+      if raw_list == []
+        # render all latest experiences
+      else
+        # render the location articles
+      end
+    elsif params[:article_type]
       raw_list = Article.where(article_type: params[:article_type]).sort_by(&:created_at).reverse
-
       render json: raw_list, each_serializer: ArticlesIndexSerializer
     else
       render json: {

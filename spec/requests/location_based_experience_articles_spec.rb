@@ -4,7 +4,7 @@ RSpec.describe 'GET api/articles', type: :request do
   describe 'successfully' do
     let!(:article) { 2.times { create(:article, article_type: 0) } }
     before do
-      get 'api/articles?article_type=experience&lat=&long='
+      get '/api/articles?article_type=experience&lat=55.7842432&long=12.45184'
     end
 
     it 'responds with a 200 status' do
@@ -16,12 +16,12 @@ RSpec.describe 'GET api/articles', type: :request do
     end
 
     it 'articles have expected location' do
-      expect(response_json['articles'].first['location']).to eq 'Gothenburg'
+      expect(response_json['articles'].first['location']).to eq 'Frederiksdal'
     end
   end
   describe 'unsuccessfully, but renders instead all experiences' do
     before do
-      get 'api/articles?article_type=experience&lat=&long='
+      get '/api/articles?article_type=experience&lat=57.650002&long=12.016667'
     end
 
     it 'responds with a 200 status' do
