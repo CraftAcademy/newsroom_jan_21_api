@@ -7,7 +7,7 @@ class Api::ArticlesController < ApplicationController
     else
       render json: {
         message: "Needs specification for type of article!"
-      }
+      }, status: 422
     end
   rescue ActiveRecord::StatementInvalid => error
     render json: {
