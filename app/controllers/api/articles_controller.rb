@@ -14,4 +14,13 @@ class Api::ArticlesController < ApplicationController
       message: 'Invalid article type. Try story or experience.'
     }, status: 422
   end
+
+  def show
+    article = Article.find(params[:id])
+    render json: article, serializer: ArticlesShowSerializer
+  rescue ActiveRecord::RecordNotFound => error
+    render json: {
+      message: 'Article not found.'
+    }, status: 404
+  end
 end
