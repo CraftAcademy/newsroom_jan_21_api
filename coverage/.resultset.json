@@ -1,0 +1,92 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/tony/get_local/newsroom_jan_21_api/app/models/article.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/tony/get_local/newsroom_jan_21_api/app/models/application_record.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/tony/get_local/newsroom_jan_21_api/app/controllers/api/articles_controller.rb": [
+        1,
+        1,
+        20,
+        16,
+        null,
+        14,
+        null,
+        4,
+        null,
+        null,
+        null,
+        null,
+        2,
+        null,
+        null,
+        null,
+        null,
+        1,
+        4,
+        4,
+        null,
+        null
+      ],
+      "/Users/tony/get_local/newsroom_jan_21_api/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/tony/get_local/newsroom_jan_21_api/app/serializers/articles_index_serializer.rb": [
+        1,
+        1,
+        1,
+        70,
+        null,
+        null
+      ],
+      "/Users/tony/get_local/newsroom_jan_21_api/app/serializers/articles_show_serializer.rb": [
+        1,
+        1,
+        1,
+        4,
+        null,
+        null
+      ],
+      "/Users/tony/get_local/newsroom_jan_21_api/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/tony/get_local/newsroom_jan_21_api/app/jobs/application_job.rb": [
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0
+      ],
+      "/Users/tony/get_local/newsroom_jan_21_api/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/tony/get_local/newsroom_jan_21_api/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1614804977
+  }
+}
