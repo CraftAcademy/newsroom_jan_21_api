@@ -1,20 +1,20 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/tony/get_local/newsroom_jan_21_api/app/models/article.rb": [
+      "/home/craft_student/craft/get_local/api_newsroom/app/models/article.rb": [
         1,
         1,
         null,
         1,
         null
       ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/models/application_record.rb": [
+      "/home/craft_student/craft/get_local/api_newsroom/app/models/application_record.rb": [
         1,
         1,
         null,
         null
       ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/controllers/api/articles_controller.rb": [
+      "/home/craft_student/craft/get_local/api_newsroom/app/controllers/api/articles_controller.rb": [
         1,
         1,
         18,
@@ -33,8 +33,8 @@
         null,
         null,
         1,
-        6,
-        4,
+        7,
+        5,
         null,
         2,
         null,
@@ -42,12 +42,12 @@
         null,
         null
       ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/controllers/application_controller.rb": [
+      "/home/craft_student/craft/get_local/api_newsroom/app/controllers/application_controller.rb": [
         1,
         null,
         null
       ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/serializers/articles_index_serializer.rb": [
+      "/home/craft_student/craft/get_local/api_newsroom/app/serializers/articles_index_serializer.rb": [
         1,
         1,
         1,
@@ -55,21 +55,15 @@
         null,
         null
       ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/serializers/articles_show_serializer.rb": [
+      "/home/craft_student/craft/get_local/api_newsroom/app/serializers/articles_show_serializer.rb": [
         1,
         1,
         1,
-        4,
+        5,
         null,
         null
       ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/mailers/application_mailer.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/jobs/application_job.rb": [
+      "/home/craft_student/craft/get_local/api_newsroom/app/jobs/application_job.rb": [
         0,
         null,
         null,
@@ -78,19 +72,25 @@
         null,
         0
       ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/channels/application_cable/connection.rb": [
+      "/home/craft_student/craft/get_local/api_newsroom/app/mailers/application_mailer.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/tony/get_local/newsroom_jan_21_api/app/channels/application_cable/channel.rb": [
+      "/home/craft_student/craft/get_local/api_newsroom/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/craft_student/craft/get_local/api_newsroom/app/channels/application_cable/connection.rb": [
         0,
         0,
         0,
         0
       ]
     },
-    "timestamp": 1614853846
+    "timestamp": 1614858454
   }
 }
