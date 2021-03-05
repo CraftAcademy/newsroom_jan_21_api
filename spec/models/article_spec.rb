@@ -7,6 +7,7 @@ RSpec.describe Article, type: :model do
     it { is_expected.to have_db_column :teaser}
     it { is_expected.to have_db_column :article_type}
     it { is_expected.to have_db_column :created_at}
+    it { is_expected.to have_db_column :location}
   end
   
   describe 'validates attributes' do

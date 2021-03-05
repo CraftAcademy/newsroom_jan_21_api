@@ -4,6 +4,6 @@ FactoryBot.define do
     teaser { 'MyTeaser' }
     body { 'MyLongBodyText' }
     article_type { 1 }
-    location { 'Frederiksdal' }
+    location { 'Stockholm' }
   end
 end
