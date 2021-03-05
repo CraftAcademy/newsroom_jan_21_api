@@ -6,7 +6,7 @@ class Api::ArticlesController < ApplicationController
       if raw_list == []
         raw_list = Article.where(article_type: params[:article_type]).sort_by(&:created_at).reverse
         render json: {
-          message: 'We found no local articles from Frederiksdal.',
+          message: "We found no local articles from #{location.first.city}.",
           articles: raw_list, each_serializer: ArticlesIndexSerializer
         }
       else
