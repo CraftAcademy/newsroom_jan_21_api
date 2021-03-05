@@ -1,9 +1,8 @@
 RSpec.describe 'GET /api/articles/:id', type: :request do
-  let!(:test_article1) { create(:article, created_at: Time.local(2021)) }
+  let!(:test_article1) { create(:article, created_at: Time.local(2020, 12, 31, 6, 0)) }
   describe 'successfully' do
     before do
       get "/api/articles/#{test_article1.id}"
-     
     end
     it 'responds with 200 status' do
       expect(response).to have_http_status 200
@@ -21,11 +20,10 @@ RSpec.describe 'GET /api/articles/:id', type: :request do
       expect(response_json['article']['title']).to eq 'MyTitle'
     end
 
-    it 'responds with the right title' do
+    it 'responds with the right date' do
       expect(response_json['article']['date']).to eq '2020-12-31'
     end
   end
-
 
   describe 'unsuccessfully with non-existent article' do
     before do
