@@ -6,7 +6,8 @@ class Api::ArticlesController < ApplicationController
       if raw_list == []
         raw_list = Article.where(article_type: params[:article_type]).sort_by(&:created_at).reverse
         render json: {
-          message: "We found no local articles from #{location.first.city}."
+          message: 'We found no local articles from Frederiksdal.',
+          articles: raw_list, each_serializer: ArticlesIndexSerializer
         }
       else
         render json: raw_list, each_serializer: ArticlesIndexSerializer
@@ -19,11 +20,13 @@ class Api::ArticlesController < ApplicationController
         message: 'Needs specification for type of article!'
       }, status: 422
     end
-  rescue NoMethodError => error
+  rescue NoMethodError => e
+    raw_list = Article.where(article_type: params[:article_type]).sort_by(&:created_at).reverse
     render json: {
-      message: "We weren't able to get your location. Enjoy our latest articles instead!"
+      message: "We weren't able to get your location. Enjoy our latest articles instead!",
+      articles: raw_list, each_serializer: ArticlesIndexSerializer
     }
-  rescue ActiveRecord::StatementInvalid => error
+  rescue ActiveRecord::StatementInvalid => e
     render json: {
       message: 'Invalid article type. Try story or experience.'
     }, status: 422
