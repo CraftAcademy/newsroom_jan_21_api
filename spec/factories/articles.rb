@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :article do
-    title { "MyTitle" }
-    teaser { "MyTeaser" }
-    body { "MyLongBodyText" }
+    title { 'MyTitle' }
+    teaser { 'MyTeaser' }
+    body { 'MyLongBodyText' }
     article_type { 1 }
+    location { 'Stockholm' }
   end
 end

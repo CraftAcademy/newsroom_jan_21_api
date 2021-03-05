@@ -7,6 +7,7 @@ RSpec.describe Article, type: :model do
     it { is_expected.to have_db_column :teaser}
     it { is_expected.to have_db_column :article_type}
     it { is_expected.to have_db_column :created_at}
+    it { is_expected.to have_db_column :location}
   end
   
   describe 'validates attributes' do
@@ -14,6 +15,7 @@ RSpec.describe Article, type: :model do
     it { should validate_presence_of(:title)}
     it { should validate_presence_of(:teaser)}
     it { should validate_presence_of(:body)}
+    it { should validate_presence_of(:location)}
   end
 
   describe 'validate enum attribute' do
