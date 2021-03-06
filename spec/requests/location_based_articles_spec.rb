@@ -19,8 +19,8 @@ RSpec.describe 'GET api/articles', type: :request do
       expect(response_json['articles'].first['title']).to eq 'From Frederiksdal'
     end
 
-    it 'responds with the location' do
-      expect(response_json['location']).to eq 'Frederiksdal'
+    it 'responds with a location message' do
+      expect(response_json['message']).to eq 'Latest articles from Frederiksdal'
     end
   end
   describe 'unsuccessfully, but renders instead all experiences' do
