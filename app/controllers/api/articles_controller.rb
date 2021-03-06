@@ -1,4 +1,6 @@
 class Api::ArticlesController < ApplicationController
+  before_action :authenticate_admin!, only: [:create]
+
   def index
     if params[:lat] && params[:long]
       location = Geocoder.search([params[:lat], params[:long]])
@@ -11,13 +13,13 @@ class Api::ArticlesController < ApplicationController
         render json: raw_list, each_serializer: ArticlesIndexSerializer,
                meta: "Latest articles from #{location.first.city}", meta_key: :message
       end
-    
+
     elsif params[:category]
       raw_list = Article.where(category: params[:category]).sort_by(&:created_at).reverse
       if raw_list == []
-        render json: {message: 'Unfortunately we did not find any articles with this category.'},
-        status: 404
-      else 
+        render json: { message: 'Unfortunately we did not find any articles with this category.' },
+               status: 404
+      else
         render json: raw_list, each_serializer: ArticlesIndexSerializer
       end
 
@@ -29,12 +31,10 @@ class Api::ArticlesController < ApplicationController
         message: 'Needs specification for type of article!'
       }, status: 422
     end
-    
   rescue NoMethodError => e
     raw_list = Article.all.sort_by(&:created_at).reverse
     render json: raw_list, each_serializer: ArticlesIndexSerializer,
            meta: "We weren't able to get your location. Enjoy our latest articles instead!", meta_key: :message
-
   rescue ActiveRecord::StatementInvalid => e
     render json: {
       message: 'Invalid article type. Try story or experience.'
@@ -48,5 +48,21 @@ class Api::ArticlesController < ApplicationController
     render json: {
       message: 'Article not found.'
     }, status: 404
+  end
+
+  def create
+    current_admin.articles.create(
+      title: params[:title], teaser: params[:teaser], body: params[:body],
+      article_type: params[:article_type], location: params[:location], category: params[:category]
+    )
+    if current_admin.articles.last.persisted?
+      render json: {
+        message: 'The article was successfully created.'
+      }, status: 201
+    else
+      render json: {
+        message: 'Please fill out all fields.'
+      }, status: 422
+    end
   end
 end

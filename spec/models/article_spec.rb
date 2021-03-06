@@ -23,4 +23,10 @@ RSpec.describe Article, type: :model do
   describe 'validate enum attribute' do
     it { should define_enum_for(:article_type).with_values([:experience, :story]) }
   end
+
+  describe 'Factory' do
+    it 'should have valid Factory' do
+      expect(create(:article)).to be_valid
+    end
+  end
 end

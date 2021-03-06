@@ -12,4 +12,10 @@ RSpec.describe Admin, type: :model do
   describe 'validate enum attribute' do
     it { should define_enum_for(:role).with_values([:admin, :editor, :journalist]) }
   end
+
+  describe 'Factory' do
+    it 'should have valid Factory' do
+      expect(create(:admin)).to be_valid
+    end
+  end
 end
