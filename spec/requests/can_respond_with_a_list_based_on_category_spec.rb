@@ -1,7 +1,7 @@
 RSpec.describe 'GET /api/articles', type: :request do
   let!(:article) { 3.times { create(:article) } }
   describe 'successfully' do
-    let!(:article) { 3.times { create(:article, category: 'News') } }
+    let!(:article) { 3.times { create(:article, category: 'news') } }
     before do
       get '/api/articles?category=news'
     end
@@ -15,13 +15,13 @@ RSpec.describe 'GET /api/articles', type: :request do
     end
 
     it 'responds with the category as an attribute' do
-      expect(response_json['articles']['category']).to eq 'News'
+      expect(response_json['articles'].first['category']).to eq 'news'
     end
   end
 
   describe 'unsuccessfully with no articles of that category' do
     before do
-      get '/api/articles=category=news'
+      get '/api/articles?category=news'
     end
 
     it 'responds with a 404' do

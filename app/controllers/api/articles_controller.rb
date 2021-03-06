@@ -12,7 +12,14 @@ class Api::ArticlesController < ApplicationController
                meta: "Latest articles from #{location.first.city}", meta_key: :message
       end
     
-    elsif
+    elsif params[:category]
+      raw_list = Article.where(category: params[:category]).sort_by(&:created_at).reverse
+      if raw_list == []
+        render json: {message: 'Unfortunately we did not find any articles with this category.'},
+        status: 404
+      else 
+        render json: raw_list, each_serializer: ArticlesIndexSerializer
+      end
 
     elsif params[:article_type]
       raw_list = Article.where(article_type: params[:article_type]).sort_by(&:created_at).reverse
