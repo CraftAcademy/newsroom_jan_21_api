@@ -10,7 +10,7 @@ RSpec.describe Article, type: :model do
     it { is_expected.to have_db_column :location}
     it { is_expected.to have_db_column :category}
   end
-  
+
   describe 'validates attributes' do
     it { should validate_presence_of(:article_type)}
     it { should validate_presence_of(:title)}

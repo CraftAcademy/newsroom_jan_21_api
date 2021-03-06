@@ -6,5 +6,6 @@ FactoryBot.define do
     article_type { 1 }
     location { 'Stockholm' }
     category { 'Events' }
+    admin { nil }
   end
 end
