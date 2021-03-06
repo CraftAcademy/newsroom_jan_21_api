@@ -5,5 +5,6 @@ FactoryBot.define do
     body { 'MyLongBodyText' }
     article_type { 1 }
     location { 'Stockholm' }
+    category { 'Events' }
   end
 end

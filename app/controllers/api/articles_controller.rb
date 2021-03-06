@@ -9,8 +9,11 @@ class Api::ArticlesController < ApplicationController
                meta: "We found no local articles from #{location.first.city}.", meta_key: :message
       else
         render json: raw_list, each_serializer: ArticlesIndexSerializer,
-        meta: "Latest articles from #{location.first.city}", meta_key: :message
+               meta: "Latest articles from #{location.first.city}", meta_key: :message
       end
+    
+    elsif
+
     elsif params[:article_type]
       raw_list = Article.where(article_type: params[:article_type]).sort_by(&:created_at).reverse
       render json: raw_list, each_serializer: ArticlesIndexSerializer
@@ -19,10 +22,12 @@ class Api::ArticlesController < ApplicationController
         message: 'Needs specification for type of article!'
       }, status: 422
     end
+    
   rescue NoMethodError => e
     raw_list = Article.all.sort_by(&:created_at).reverse
     render json: raw_list, each_serializer: ArticlesIndexSerializer,
            meta: "We weren't able to get your location. Enjoy our latest articles instead!", meta_key: :message
+
   rescue ActiveRecord::StatementInvalid => e
     render json: {
       message: 'Invalid article type. Try story or experience.'
