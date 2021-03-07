@@ -7,7 +7,7 @@ RSpec.describe 'POST /api/articles', type: :request do
            params: {
              title: 'My First Article',
              teaser: 'You better read this, otherwise you will miss out!',
-             body: 'A lot of lorem.',
+             body: ['A lot of lorem.'],
              article_type: 'story',
              category: 'news',
              location: 'Frederiksdal'
@@ -45,7 +45,7 @@ RSpec.describe 'POST /api/articles', type: :request do
 
     it 'creates an article with the expected body' do
       article = Article.all.first
-      expect(article['body']).to eq 'A lot of lorem.'
+      expect(article['body']).to eq ['A lot of lorem.']
     end
 
     it 'creates an article with the expected article_type' do

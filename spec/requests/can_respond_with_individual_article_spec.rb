@@ -13,7 +13,7 @@ RSpec.describe 'GET /api/articles/:id', type: :request do
     end
 
     it 'responds with the right body' do
-      expect(response_json['article']['body']).to eq 'MyLongBodyText'
+      expect(response_json['article']['body']).to eq ['MyLongBodyText']
     end
 
     it 'responds with the right title' do
