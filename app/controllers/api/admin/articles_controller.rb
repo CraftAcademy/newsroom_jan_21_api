@@ -8,7 +8,7 @@ class Api::Admin::ArticlesController < ApplicationController
         message: "You haven't written any articles yet."
       }
     else
-      render json: raw_list, each_serializer: AdminSerializer
+      render json: raw_list, each_serializer: ArticlesAdminIndexSerializer
     end
   end
 

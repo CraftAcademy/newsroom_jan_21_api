@@ -17,8 +17,7 @@ RSpec.describe 'GET /api/admin/articles', type: :request do
     end
 
     it 'expects the articles to belong to the current_admin' do
-      binding.pry
-      expect(response_json['articles'].first['admin']).to eq admin.id
+      expect(response_json['articles'].first['admin']['id']).to eq admin.id
     end
 
     it 'expects the articles to contain the title' do
