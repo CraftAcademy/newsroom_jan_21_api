@@ -13,11 +13,9 @@ class Api::Admin::ArticlesController < ApplicationController
   end
 
   def create
-    current_admin.articles.create(
-      title: params[:title], teaser: params[:teaser], body: params[:body],
-      article_type: params[:article_type], location: params[:location], category: params[:category]
-    )
-    if current_admin.articles.last.persisted?
+    article = current_admin.articles.create(params.permit(
+      :title, :teaser, :article_type, :category, :location, body: []))
+    if article.persisted?
       render json: {
         message: 'The article was successfully created.'
       }, status: 201
