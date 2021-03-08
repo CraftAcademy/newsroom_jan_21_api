@@ -24,3 +24,4 @@ Article.create([
                ])
 
 Admin.create(name: 'Lucas', email: 'test@gmail.com', password: 'password', password_confirmation: 'password')
+Admin.create(name: 'Miran', email: 'user@gmail.com', password: 'password', password_confirmation: 'password')
