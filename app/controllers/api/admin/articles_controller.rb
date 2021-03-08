@@ -1,8 +1,8 @@
 class Api::Admin::ArticlesController < ApplicationController
   before_action :authenticate_admin!
-
+  
   def index
-    raw_list = Article.where(admin: current_admin)
+    raw_list = Article.where(admin: current_admin).sort_by(&:updated_at).reverse
     if raw_list == []
       render json: {
         message: "You haven't written any articles yet."
