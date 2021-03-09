@@ -4,6 +4,7 @@ class ArticlesIndexSerializer < ActiveModel::Serializer
     object.created_at.strftime('%F')
   end
   def image
+    return nil unless object.image.attached?
     object.image_url
   end
 end
