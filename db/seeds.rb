@@ -27,5 +27,5 @@ Article.create([
                ])
 
 Article.all.each do |article|
-  article.image.attach(io: File.open('storage/seed_image.jpg'), filename: 'seed_image.png', content_type: 'image/png')
+  article.image.attach(io: File.open('storage/seed_image_min.jpg'), filename: 'seed_image.png', content_type: 'image/jpg')
 end
