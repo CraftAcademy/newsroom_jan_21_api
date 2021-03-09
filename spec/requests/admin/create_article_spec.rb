@@ -1,19 +1,11 @@
 RSpec.describe 'POST /api/admin/articles', type: :request do
   let!(:admin) { create(:admin) }
   let!(:auth_headers) {admin.create_new_auth_token}
-<<<<<<< HEAD
-  let!(:image) do
-    {
-      type: 'application/png',
-      encoder: 'name=logo.png:base64',
-      data: 'ahdiawduhaiduahw',
-=======
   let(:image) do
     {
       type: 'application(png)',
       encoder: 'name=ca_logo.png:base64',
       data: 'AEDAAAAAIEFJEEEEEEEEEMVKAAAAAAAAAAAAAAAOEEFEEEEE',
->>>>>>> cd5af747e4b11cbf9f00219a5acbae33074e73c1
       extension: 'png'
     }
   end
@@ -28,10 +20,6 @@ RSpec.describe 'POST /api/admin/articles', type: :request do
              category: 'news',
              location: 'Frederiksdal',
              image: image
-<<<<<<< HEAD
-             
-=======
->>>>>>> cd5af747e4b11cbf9f00219a5acbae33074e73c1
            },
            headers: auth_headers
     end

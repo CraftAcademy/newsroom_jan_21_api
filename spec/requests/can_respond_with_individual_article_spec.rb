@@ -1,5 +1,6 @@
 RSpec.describe 'GET /api/articles/:id', type: :request do
-  let!(:test_article1) { create(:article, created_at: Time.local(2020, 12, 31, 6, 0)) }
+  let(:admin) {create(:admin)}
+  let!(:test_article1) { create(:article, admin: admin, created_at: Time.local(2020, 12, 31, 6, 0)) }
   describe 'successfully' do
     before do
       get "/api/articles/#{test_article1.id}"
@@ -22,6 +23,10 @@ RSpec.describe 'GET /api/articles/:id', type: :request do
 
     it 'responds with the right date' do
       expect(response_json['article']['date']).to eq '2020-12-31'
+    end
+
+    it 'responds with a author' do
+      expect(response_json['article']['author']['name']).to eq "Mr. Miyagi"
     end
   end
 
