@@ -74,7 +74,7 @@ RSpec.describe 'POST /api/admin/articles', type: :request do
 
     it 'creates an article with the expected image' do
       article = Article.all.first
-      expect(article['image']).to eq 'some URL'
+      expect(article.image_url).to be_truthy
     end
   end
 
