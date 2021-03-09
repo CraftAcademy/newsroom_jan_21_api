@@ -11,6 +11,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'active_model_serializers'
 gem 'geocoder'
 gem 'devise_token_auth'
+gem 'aws-sdk-s3'
 
 group :development, :test do
   gem 'factory_bot_rails'
