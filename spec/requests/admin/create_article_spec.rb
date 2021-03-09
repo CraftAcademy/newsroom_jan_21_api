@@ -1,9 +1,9 @@
-RSpec.describe 'POST /api/articles', type: :request do
+RSpec.describe 'POST /api/admin/articles', type: :request do
   let!(:admin) { create(:admin) }
   let!(:auth_headers) {admin.create_new_auth_token}
   describe 'successfully' do
     before do
-      post '/api/articles',
+      post '/api/admin/articles',
            params: {
              title: 'My First Article',
              teaser: 'You better read this, otherwise you will miss out!',
@@ -66,7 +66,7 @@ RSpec.describe 'POST /api/articles', type: :request do
 
   describe 'unsuccessfully for unauthenticated admins' do
     before do
-      post '/api/articles',
+      post '/api/admin/articles',
            params: {
              title: 'My First Article',
              teaser: 'You better read this, otherwise you will miss out!',
@@ -89,7 +89,7 @@ RSpec.describe 'POST /api/articles', type: :request do
 
   describe 'unsuccessfully if an attribute is missing' do
     before do
-      post '/api/articles',
+      post '/api/admin/articles',
            params: {
              teaser: 'You better read this, otherwise you will miss out!',
              body: 'A lot of lorem.',
