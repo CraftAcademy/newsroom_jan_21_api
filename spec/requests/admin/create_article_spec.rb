@@ -1,6 +1,14 @@
 RSpec.describe 'POST /api/admin/articles', type: :request do
   let!(:admin) { create(:admin) }
   let!(:auth_headers) {admin.create_new_auth_token}
+  let(:image) do
+    {
+      type: 'application(png)',
+      encoder: 'name=ca_logo.png:base64',
+      data: 'AEDAAAAAIEFJEEEEEEEEEMVKAAAAAAAAAAAAAAAOEEFEEEEE',
+      extension: 'png'
+    }
+  end
   describe 'successfully' do
     before do
       post '/api/admin/articles',
@@ -11,7 +19,7 @@ RSpec.describe 'POST /api/admin/articles', type: :request do
              article_type: 'story',
              category: 'news',
              location: 'Frederiksdal',
-             
+             image: image
            },
            headers: auth_headers
     end
@@ -62,6 +70,11 @@ RSpec.describe 'POST /api/admin/articles', type: :request do
     it 'creates an article with the expected category' do
       article = Article.all.first
       expect(article['category']).to eq 'news'
+    end
+
+    it 'creates an article with the expected image' do
+      article = Article.all.first
+      expect(article['image']).to eq 'some URL'
     end
   end
 
