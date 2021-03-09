@@ -1,6 +1,14 @@
 RSpec.describe 'POST /api/admin/articles', type: :request do
   let!(:admin) { create(:admin) }
   let!(:auth_headers) {admin.create_new_auth_token}
+  let!(:image) do
+    {
+      type: 'application/png',
+      encoder: 'name=logo.png:base64',
+      data: 'ahdiawduhaiduahw',
+      extension: 'png'
+    }
+  end
   describe 'successfully' do
     before do
       post '/api/admin/articles',
@@ -11,6 +19,7 @@ RSpec.describe 'POST /api/admin/articles', type: :request do
              article_type: 'story',
              category: 'news',
              location: 'Frederiksdal',
+             image: image
              
            },
            headers: auth_headers
