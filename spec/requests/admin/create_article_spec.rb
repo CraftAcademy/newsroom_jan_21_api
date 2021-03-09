@@ -10,7 +10,8 @@ RSpec.describe 'POST /api/admin/articles', type: :request do
              body: ['A lot of lorem.'],
              article_type: 'story',
              category: 'news',
-             location: 'Frederiksdal'
+             location: 'Frederiksdal',
+             
            },
            headers: auth_headers
     end
