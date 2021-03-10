@@ -3,8 +3,10 @@ class ArticlesIndexSerializer < ActiveModel::Serializer
   def date
     object.created_at.strftime('%F')
   end
+
   def image
     return nil unless object.image.attached?
+
     object.image_url
   end
 end
