@@ -46,7 +46,7 @@ RSpec.describe 'PUT /api/admin/articles/:id', type: :request do
     end
   end
 
-  describe 'unsuccessfully' do
+  describe 'unsuccessfully with faulty params' do
     before do
       put "/api/admin/articles/#{article.id}",
           params: {

@@ -13,9 +13,7 @@ class Api::Admin::ArticlesController < ApplicationController
   end
 
   def create
-    article = current_admin.articles.create(params.permit(
-                                              :title, :teaser, :article_type, :category, :location, body: []
-                                            ))
+    article = current_admin.articles.create(permitted_params())
     if article.persisted? & attach_image(article)
       render json: {
         message: 'The article was successfully created.'
@@ -29,9 +27,7 @@ class Api::Admin::ArticlesController < ApplicationController
 
   def update
     article = Article.find(params[:id])
-    if article.update(params.permit(
-                        :title, :teaser, :article_type, :category, :location, body: []
-                      )) & attach_image(article)
+    if article.update(permitted_params()) & attach_image(article)
       render json: {
         message: 'The article was successfully updated!'
       }, status: 200
@@ -44,15 +40,10 @@ class Api::Admin::ArticlesController < ApplicationController
 
   private
 
-  def is_updated?(article)
-    last_update = article[:updated_at]
-    required_params = %i[title teaser body article_type category location]
-
-    if required_params.all? { |k| params.has_key? k }
-
-    end
-
-    last_update != article[:updated_at]
+  def permitted_params
+    params.permit(
+      :title, :teaser, :article_type, :category, :location, body: []
+    )
   end
 
   def attach_image(article)
