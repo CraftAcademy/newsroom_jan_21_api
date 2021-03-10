@@ -44,8 +44,12 @@ class Api::Admin::ArticlesController < ApplicationController
   end
 
   private
+def is_updated?
+article = 
 
+end
   def attach_image(article)
     DecodeService.attach_image(params[:image], article.image) if params[:image].present?
   end
 end
+
