@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :articles, only: %i[index show]
 
     namespace :admin do
-      resources :articles, only: %i[index create]
+      resources :articles, only: %i[index create update]
     end
   end
 end
