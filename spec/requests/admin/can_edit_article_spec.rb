@@ -66,7 +66,7 @@ RSpec.describe 'PUT /api/admin/articles/:id', type: :request do
   end
 
   it 'responds with not being updated' do
-    expect(article.title).to eq "MyTitle"
+    expect(article.reload.title).to eq "MyTitle"
   end
 
   it 'responds with error message' do
