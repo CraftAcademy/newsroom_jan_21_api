@@ -29,11 +29,9 @@ class Api::Admin::ArticlesController < ApplicationController
 
   def update
     article = Article.find(params[:id])
-    # article.update(params.permit(
-    #                  :title, :teaser, :article_type, :category, :location, body: []
-    #                ))
-
-    if is_updated?(article) & attach_image(article)
+    if article.update(params.permit(
+                        :title, :teaser, :article_type, :category, :location, body: []
+                      )) & attach_image(article)
       render json: {
         message: 'The article was successfully updated!'
       }, status: 200
@@ -50,10 +48,8 @@ class Api::Admin::ArticlesController < ApplicationController
     last_update = article[:updated_at]
     required_params = %i[title teaser body article_type category location]
 
-    if required_params.all? { |k| params.has_key? k}
-      article.update(params.permit(
-                       :title, :teaser, :article_type, :category, :location, body: []
-                     ))
+    if required_params.all? { |k| params.has_key? k }
+
     end
 
     last_update != article[:updated_at]

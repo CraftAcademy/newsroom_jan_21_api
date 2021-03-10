@@ -50,27 +50,27 @@ RSpec.describe 'PUT /api/admin/articles/:id', type: :request do
     before do
       put "/api/admin/articles/#{article.id}",
           params: {
-            title: 'Article title',
+            title: '',
             teaser: 'Do you really need this one?',
             body: ['A lot of weird stuffs.', 'With two paragraphs'],
             article_type: 'experience',
             category: 'trip',
+            location: 'Frederiksdal',
             image: image
           },
           headers: auth_headers
     end
-  
 
-  it 'responds with 422' do
-    expect(response).to have_http_status 422
-  end
+    it 'responds with 422' do
+      expect(response).to have_http_status 422
+    end
 
-  it 'responds with not being updated' do
-    expect(article.reload.title).to eq "MyTitle"
-  end
+    it 'responds with not being updated' do
+      expect(article.reload.title).to eq 'MyTitle'
+    end
 
-  it 'responds with error message' do
-    expect(response_json['message']).to eq 'Please fill in all the fields.'
+    it 'responds with error message' do
+      expect(response_json['message']).to eq 'Please fill in all the fields.'
     end
   end
 end
