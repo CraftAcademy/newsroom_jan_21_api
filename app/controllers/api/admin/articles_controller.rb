@@ -13,7 +13,7 @@ class Api::Admin::ArticlesController < ApplicationController
   end
 
   def create
-    article = current_admin.articles.create(permitted_params())
+    article = current_admin.articles.create(permitted_params)
     if article.persisted? & attach_image(article)
       render json: {
         message: 'The article was successfully created.'
@@ -27,13 +27,14 @@ class Api::Admin::ArticlesController < ApplicationController
 
   def update
     article = Article.find(params[:id])
-    if article.update(permitted_params()) & attach_image(article)
+    params[:image].present? && attach_image(article)
+    if article.update(permitted_params)
       render json: {
         message: 'The article was successfully updated!'
       }, status: 200
     else
       render json: {
-        message: 'Please fill in all the fields.'
+        message: "Don't leave a field empty."
       }, status: 422
     end
   end

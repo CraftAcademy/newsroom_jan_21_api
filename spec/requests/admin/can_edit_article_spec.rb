@@ -70,7 +70,7 @@ RSpec.describe 'PUT /api/admin/articles/:id', type: :request do
     end
 
     it 'responds with error message' do
-      expect(response_json['message']).to eq 'Please fill in all the fields.'
+      expect(response_json['message']).to eq "Don't leave a field empty."
     end
   end
 end
